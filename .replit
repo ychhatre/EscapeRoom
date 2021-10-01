@@ -1,0 +1,2 @@
+#move into the directory with project files & run
+run = "cd EscapeRoom/ && javac EscapeRoom.java && java EscapeRoom"
