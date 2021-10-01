@@ -58,23 +58,24 @@ public class EscapeRoom
     boolean play = true;
     while (play)
     {
-     if (UserInput.getValidInput(validCommands).equals("r") ||UserInput.getValidInput(validCommands).equals("right"))
+     String input = UserInput.getValidInput(validCommands);
+     if (input.equals("r") ||input.equals("right"))
      {
        game.movePlayer(60, 0);
      }
-     else if (UserInput.getValidInput(validCommands).equals("l") ||UserInput.getValidInput(validCommands).equals("left"))
+     else if (input.equals("l") ||input.equals("left"))
      {
         game.movePlayer(-60, 0);
      }
-     else if (UserInput.getValidInput(validCommands).equals("d") ||UserInput.getValidInput(validCommands).equals("down"))
+     else if (input.equals("d") ||input.equals("down"))
      {
         game.movePlayer(0, 60);
      }
-     else if (UserInput.getValidInput(validCommands).equals("u") ||UserInput.getValidInput(validCommands).equals("up"))
+     else if (input.equals("u") ||input.equals("up"))
      {
         game.movePlayer(0, -60);
      }
-     else if (UserInput.getValidInput(validCommands).equals("q") ||UserInput.getValidInput(validCommands).equals("quit"))
+     else if (input.equals("q") ||input.equals("quit"))
      {
        game.endGame();
        play = false;
