@@ -43,22 +43,14 @@ public class EscapeRoom
        String jumpCheck = jumpScanner.nextLine();
        if (jumpCheck.toLowerCase().equals("y"))
        {
-          if (game.isTrap(xVal, yVal))
-          {
-            score += game.springTrap(xVal, yVal) * -1;
-          }
-          else
-          {
-           score += game.springTrap(xVal, yVal);
-          }
+          score += game.springTrap(xVal, yVal);
           game.movePlayer(xVal * 2, yVal * 2);
        }
        else{
          game.movePlayer(xVal, yVal);
          if (game.isTrap(0, 0))
          {
-           score += game.springTrap(xVal, yVal);
-           game.springTrap(0,0);
+           score -= 5;
          }
          if (game.isTrap(60, 0) || game.isTrap(-60, 0) || game.isTrap(0, -60) || game.isTrap(0, 60))
          {
@@ -77,6 +69,7 @@ public class EscapeRoom
     System.out.println("Welcome to EscapeRoom!");
     System.out.println("Get to the other side of the room, avoiding walls and invisible traps,");
     System.out.println("pick up all the prizes.\n");
+    System.out.println("Enter help or ? to get all the commands!");
     
     GameGUI game = new GameGUI();
     game.createBoard();
@@ -96,22 +89,22 @@ public class EscapeRoom
      String input = UserInput.getValidInput(validCommands);
      if (input.equals("r") || input.equals("right"))
      {
-       score += EscapeRoom.trapHit(60, 0, score, game, jumpScanner);  
+       score = EscapeRoom.trapHit(60, 0, score, game, jumpScanner);  
      }
 
      else if (input.equals("l") ||input.equals("left"))
      {
-       score += EscapeRoom.trapHit(-60, 0, score, game, jumpScanner);
+       score = EscapeRoom.trapHit(-60, 0, score, game, jumpScanner);
      }
 
      else if (input.equals("d") ||input.equals("down"))
      {
-        score += EscapeRoom.trapHit(0, 60, score, game, jumpScanner);
+        score = EscapeRoom.trapHit(0, 60, score, game, jumpScanner);
      }
      
      else if (input.equals("u") ||input.equals("up"))
      {
-        score += EscapeRoom.trapHit(0, -60, score, game, jumpScanner);
+        score = EscapeRoom.trapHit(0, -60, score, game, jumpScanner);
      }
 
 
@@ -121,18 +114,23 @@ public class EscapeRoom
        play = false;
      }
     
-     else if(input.equals("h") || input.equals("help") ) {
-      //  System.out.println("Current Commands are: ");
-      //  System.out.println(""u" or "up" to move up!");
-      //  System.out.println(""d" or "down" to move up!");
-      //  System.out.println("Current Commands are: ");
-      //  System.out.println("Current Commands are: ");
-      //  System.out.println("Current Commands are: ");
+     else if(input.equals("?") || input.equals("help") ) {
+      System.out.println("Main Commands Are: ");
+      System.out.println("\"?\" or \"help\" to get commands!");
+      System.out.println("\"q\" or \"quit\" to quit the game!");
+      System.out.println("");
+      System.out.println("Player Commands Are: ");
+      System.out.println("\"u\" or \"up\" to move up!");
+      System.out.println("\"d\" or \"down\" to move down!");
+      System.out.println("\"r\" or \"right\" to move right!");
+      System.out.println("\"l\" or \"left\" to move left!");
+      System.out.println("\"p\" or \"pickup\" to pickup an item!");
+      
      }
 
      else if (input.equals("p") ||input.equals("pickup"))
      {
-        //Pickups stuff
+        score += game.pickupPrize();
      } 
      
     }
