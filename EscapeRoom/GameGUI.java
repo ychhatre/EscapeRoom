@@ -215,7 +215,6 @@ public class GameGUI extends JComponent
         // if new location of player has a trap, return true
         if (r.contains(px, py))
         {
-          System.out.println("A TRAP IS AHEAD");
           return true;
         }
       }

@@ -26,7 +26,6 @@ import java.util.Scanner;
      */
     public static String getValidInput(String[] validInputs)
     {
-      
         String input = "";
         boolean valid = false;
         do
