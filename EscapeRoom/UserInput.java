@@ -1,13 +1,13 @@
 /**
  * Validate user input according to string array of acceptable inputs.
- * 
+ *
  * @author GShorr, PLTW
  * @version 4/16/2019
  */
+
 import java.util.Scanner;
 
- public class UserInput
-{
+public class UserInput {
     /**
      * Verifies that one of the string array provided as an argument will be
      * returned. 
@@ -22,32 +22,28 @@ import java.util.Scanner;
      * converted to lowercase prior to validating.
      * <P>
      * @return the valid command the user entered
-     * 
+     *
      */
-    public static String getValidInput(String[] validInputs)
-    {
+    public static String getValidInput(String[] validInputs) {
         String input = "";
         boolean valid = false;
-        do
-        {
+        do {
             input = getLine().toLowerCase();
-            for(String str : validInputs)
-            {
-                if(input.equals(str.toLowerCase()))
+            for (String str : validInputs) {
+                if (input.equals(str.toLowerCase()))
                     valid = true;
             }
-            if(!valid)
+            if (!valid)
                 System.out.print("Invalid input. Please try again\n>");
         }
-        while(!valid);
+        while (!valid);
         return input;
     }
-    
-    public static String getLine()
-    {
+
+    public static String getLine() {
         Scanner s = new Scanner(System.in);
         return s.nextLine();
     }
 
 
-  }
+}
